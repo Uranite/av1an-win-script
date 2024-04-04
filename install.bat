@@ -124,7 +124,7 @@ cd ..\
 cd .\x264
 
 :: Download x264 encoder
-%Download-->% https://artifacts.videolan.org/x264/release-win64/x264-r3172-c1c9931.exe -O x264.exe
+%Download-->% https://artifacts.videolan.org/x264/release-win64/x264-r3190-7ed753b.exe -O x264.exe
 
 :: Add reminder about using diffrent builds, forks, branches of encoders.
 echo 'If you want to use a diffrent build or version of an encoder, Just replace it using the same executable name.' > readme.txt
