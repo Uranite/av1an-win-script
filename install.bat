@@ -1,5 +1,5 @@
 @echo off
-TITLE Av1an Win Script 🐦
+TITLE Av1an Win Script
 
 cls
 
@@ -18,7 +18,7 @@ set "Extract-->=%AV1%\7zr.exe -y x"
 cd "%AV1%"
 
 echo   Installing
-echo  ────────────  
+echo  ------------  
 :: Create directories if they don't exist
 for %%d in (
     ".\dependencies\av1an"
@@ -169,8 +169,8 @@ del .\VapourSynth64-Portable-R63.7z
 cd ..\
 cd .\svt-av1
 
-:: Download SVT-AV1 release ~1.8.0; Artifacts sometimes expire
-curl -sLf "https://gitlab.com/AOMediaCodec/SVT-AV1/-/jobs/5763507189/artifacts/download?file_type=archive" -O NUL -w "%%{url_effective}" > ./raw.txt
+:: Download SVT-AV1 release ~2.0.0; Artifacts sometimes expire
+curl -sLf "https://gitlab.com/AOMediaCodec/SVT-AV1/-/jobs/6387649298/artifacts/download?file_type=archive" -O NUL -w "%%{url_effective}" > ./raw.txt
 
 :: Grab link
 (for /f "usebackq delims=" %%a in ("raw.txt") do (
@@ -180,14 +180,14 @@ curl -sLf "https://gitlab.com/AOMediaCodec/SVT-AV1/-/jobs/5763507189/artifacts/d
 )) > "downloadlink.txt"
 
 
-%Download-->% -i .\downloadlink.txt -O SVT-AV1-1.8.zip
+%Download-->% -i .\downloadlink.txt -O SVT-AV1-2.0.zip
 
 :: Clean up
 del download > nul 2>&1
 del downloadlink.txt > nul
 del raw.txt > nul
 
-tar -xf .\SVT-AV1-1.8.zip --strip-components 2 > nul
+tar -xf .\SVT-AV1-2.0.zip --strip-components 2 > nul
 
 :: Add reminder about using diffrent builds, forks, branches of encoders.
 echo 'If you want to use a diffrent build or version of an encoder, Just replace it using the same executable name.' > readme.txt
