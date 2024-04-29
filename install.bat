@@ -169,25 +169,32 @@ del .\VapourSynth64-Portable-R63.7z
 cd ..\
 cd .\svt-av1
 
+:: Uncomment to grab from build artifacts
+
 :: Download SVT-AV1 release ~2.0.0; Artifacts sometimes expire
-curl -sLf "https://gitlab.com/AOMediaCodec/SVT-AV1/-/jobs/6387649298/artifacts/download?file_type=archive" -O NUL -w "%%{url_effective}" > ./raw.txt
+:: curl -sLf "https://gitlab.com/AOMediaCodec/SVT-AV1/-/jobs/6387649298/artifacts/download?file_type=archive" -O NUL -w "%%{url_effective}" > ./raw.txt
 
 :: Grab link
-(for /f "usebackq delims=" %%a in ("raw.txt") do (
-    set "line=%%a"
-    set "line=!line:~0,-11!"
-    echo !line!
-)) > "downloadlink.txt"
+:: (for /f "usebackq delims=" %%a in ("raw.txt") do (
+::     set "line=%%a"
+::     set "line=!line:~0,-11!"
+::     echo !line!
+:: )) > "downloadlink.txt"
 
-
-%Download-->% -i .\downloadlink.txt -O SVT-AV1-2.0.zip
+:: %Download-->% -i .\downloadlink.txt -O SVT-AV1-2.0.zip
 
 :: Clean up
-del download > nul 2>&1
-del downloadlink.txt > nul
-del raw.txt > nul
+:: del download > nul 2>&1
+:: del downloadlink.txt > nul
+:: del raw.txt > nul
 
-tar -xf .\SVT-AV1-2.0.zip --strip-components 2 > nul
+:: tar -xf .\SVT-AV1-2.0.zip --strip-components 2 > nul
+
+:: Download SVT-AV1-PSY release ~2.0.0
+%Download-->% https://github.com/gianni-rosato/svt-av1-psy/releases/download/v2.0.0/SvtAv1EncApp-Windows-x64.7z -O SvtAv1EncApp-psy.7z
+%Extract-->% .\SvtAv1EncApp-psy.7z SvtAv1EncApp-Windows-x64\SvtAv1EncApp.exe > nul
+MOVE /y .\SvtAv1EncApp-Windows-x64\SvtAv1EncApp.exe SvtAv1EncApp.exe > nul
+rmdir /s /q .\SvtAv1EncApp-Windows-x64
 
 :: Add reminder about using diffrent builds, forks, branches of encoders.
 echo 'If you want to use a diffrent build or version of an encoder, Just replace it using the same executable name.' > readme.txt
