@@ -69,7 +69,7 @@ cd ..\
 cd .\ffmpeg-6.1.1
 
 :: Download ffmpeg with shared libaries ~6.1.1
-%Download-->% https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-full-shared.7z -O ffmpeg-release-full-shared.7z
+%Download-->% https://github.com/GyanD/codexffmpeg/releases/download/6.1.1/ffmpeg-6.1.1-full_build-shared.7z -O ffmpeg-release-full-shared.7z
 %Extract-->% .\ffmpeg-release-full-shared.7z ffmpeg-6.1.1-full_build-shared\bin > nul
 
 :: Move contents of bin
