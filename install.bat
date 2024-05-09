@@ -162,7 +162,15 @@ del .\python-3.12.3-embed-amd64.zip
 tar -xf .\VapourSynth64-Portable-R68.zip > nul
 del .\VapourSynth64-Portable-R68.zip
 
-:: Download plugins [These plugins used can spit out errors and is known to be broken on VapourSynth64-R62]
+:: install pip
+echo import site >> python312._pth
+%Download-->% https://bootstrap.pypa.io/get-pip.py
+.\python.exe get-pip.py --no-warn-script-location > nul
+
+:: install VapourSynth64 wheel
+.\Scripts\pip.exe install .\wheel\VapourSynth-68-cp312-cp312-win_amd64.whl --no-warn-script-location  > nul
+
+:: Download plugins
  .\python.exe .\vsrepo.py update -p  > nul
  .\python.exe .\vsrepo.py install lsmas ffms2 -p  > nul
 

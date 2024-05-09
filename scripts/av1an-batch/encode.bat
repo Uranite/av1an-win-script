@@ -19,6 +19,9 @@ for /D %%G in ("%AV1%\..\..\dependencies\*") do (
     set PATH=!PATH!;%%G
 )
 
+:: Append vapoursynth.dll path
+set PATH=!PATH!;%AV1%\..\..\dependencies\vapoursynth64\Lib\site-packages
+
 :: Count how many in queue
 set /a queueCounter=0
 
