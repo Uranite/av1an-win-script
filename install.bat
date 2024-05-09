@@ -68,7 +68,7 @@ del .\bat.zip
 cd ..\
 cd .\ffmpeg-6.1.1
 
-:: Download ffmpeg with shared libaries ~6.1.1
+:: Download ffmpeg with shared libraries ~6.1.1
 %Download-->% https://github.com/GyanD/codexffmpeg/releases/download/6.1.1/ffmpeg-6.1.1-full_build-shared.7z -O ffmpeg-release-full-shared.7z
 %Extract-->% .\ffmpeg-release-full-shared.7z ffmpeg-6.1.1-full_build-shared\bin > nul
 
@@ -110,8 +110,8 @@ cd .\aom
 %Extract-->% Skylake.Windows.aom-av1-psy-Windows-Endless_Possibility-LTO-2022-09-06.7z > nul
 MOVE /y aom-av1-psy-Windows-Endless_Possibility-Skylake-LTO-2022-09-06.exe aomenc.exe > nul
 
-:: Add reminder about using diffrent builds, forks, branches of encoders.
-echo 'If you want to use a diffrent build or version of an encoder, Just replace it using the same executable name.' > readme.txt
+:: Add reminder about using different builds, forks, branches of encoders.
+echo "If you want to use a different build or version of an encoder, just replace it using the same executable name." > readme.txt
 
 cd ..\
 cd .\vmaf
@@ -126,8 +126,8 @@ cd .\x264
 :: Download x264 encoder
 %Download-->% https://artifacts.videolan.org/x264/release-win64/x264-r3190-7ed753b.exe -O x264.exe
 
-:: Add reminder about using diffrent builds, forks, branches of encoders.
-echo 'If you want to use a diffrent build or version of an encoder, Just replace it using the same executable name.' > readme.txt
+:: Add reminder about using different builds, forks, branches of encoders.
+echo "If you want to use a different build or version of an encoder, just replace it using the same executable name." > readme.txt
 
 cd ..\
 cd .\x265
@@ -140,8 +140,8 @@ rmdir /s /q .\winthread
 rmdir /s /q .\llvm
 del ReadMe.txt
 
-:: Add reminder about using diffrent builds, forks, branches of encoders.
-echo 'If you want to use a diffrent build or version of an encoder, Just replace it using the same executable name.' > readme.txt
+:: Add reminder about using different builds, forks, branches of encoders.
+echo "If you want to use a different build or version of an encoder, just replace it using the same executable name." > readme.txt
 
 cd ..\
 cd .\rav1e
@@ -196,8 +196,8 @@ cd .\svt-av1
 MOVE /y .\SvtAv1EncApp-Windows-x64\SvtAv1EncApp.exe SvtAv1EncApp.exe > nul
 rmdir /s /q .\SvtAv1EncApp-Windows-x64
 
-:: Add reminder about using diffrent builds, forks, branches of encoders.
-echo 'If you want to use a diffrent build or version of an encoder, Just replace it using the same executable name.' > readme.txt
+:: Add reminder about using different builds, forks, branches of encoders.
+echo "If you want to use a different build or version of an encoder, just replace it using the same executable name." > readme.txt
 
 popd
 
