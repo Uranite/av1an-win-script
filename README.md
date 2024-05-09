@@ -2,7 +2,7 @@
 
 A Windows Batch script that sets up [Av1an](https://github.com/master-of-zen/Av1an) with all its dependencies for AV1 in a portable workspace. It doesn't require building from source or modifying any path variables. Once installed, you can queue multiple files to be encoded using the parameters you specify.
 
-![preview](./preview.png)
+![preview](./preview.webp)
 
 ## 🛠️ Installation
   Open PowerShell in a directory path that contains no spaces and run:

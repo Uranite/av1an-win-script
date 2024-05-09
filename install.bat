@@ -213,7 +213,7 @@ popd
 del .wget-hsts > nul
 del wget.exe > nul
 del 7zr.exe > nul
-del preview.png > nul
+del preview.webp > nul
 
 echo:
 echo Installation Finished
