@@ -98,8 +98,8 @@ for /d /r %%i in (*) do (
 
 cd ..\
 
-:: Download portable mkvtoolnix ~83.0
-%Download-->% https://mkvtoolnix.download/windows/releases/83.0/mkvtoolnix-64-bit-83.0.7z -O mkvtoolnix.7z
+:: Download portable mkvtoolnix ~84.0
+%Download-->% https://mkvtoolnix.download/windows/releases/84.0/mkvtoolnix-64-bit-84.0.7z -O mkvtoolnix.7z
 %Extract-->% .\mkvtoolnix.7z > nul
 del .\mkvtoolnix.7z
 
@@ -133,8 +133,8 @@ cd ..\
 cd .\x265
 
 :: Download x265 encoder
-%Download-->% https://github.com/jpsdr/x265/releases/download/3.50.116/x265_r3_5_0_116.7z
-%Extract-->% .\x265_r3_5_0_116.7z > nul
+%Download-->% https://github.com/jpsdr/x265/releases/download/3.60.8/x265_r3_6_0_8.7z
+%Extract-->% .\x265_r3_6_0_8.7z > nul
 MOVE /y .\Winthread\Multilib\Release\x265_x64.exe x265.exe > nul
 rmdir /s /q .\winthread
 rmdir /s /q .\llvm
@@ -152,15 +152,15 @@ cd .\rav1e
 cd ..\
 cd .\vapoursynth64
 
-:: Download embedded Python ~3.11.2
-%Download-->% https://www.python.org/ftp/python/3.11.2/python-3.11.2-embed-amd64.zip
-tar -xf .\python-3.11.2-embed-amd64.zip 
-del .\python-3.11.2-embed-amd64.zip
+:: Download embedded Python ~3.12.3
+%Download-->% https://www.python.org/ftp/python/3.12.3/python-3.12.3-embed-amd64.zip
+tar -xf .\python-3.12.3-embed-amd64.zip
+del .\python-3.12.3-embed-amd64.zip
 
-:: Download VapourSynth64 Portable ~R63
-%Download-->% https://github.com/vapoursynth/vapoursynth/releases/download/R63/VapourSynth64-Portable-R63.7z
-%Extract-->% .\VapourSynth64-Portable-R63.7z > nul
-del .\VapourSynth64-Portable-R63.7z
+:: Download VapourSynth64 Portable ~R68
+%Download-->% https://github.com/vapoursynth/vapoursynth/releases/download/R68/VapourSynth64-Portable-R68.zip
+tar -xf .\VapourSynth64-Portable-R68.zip > nul
+del .\VapourSynth64-Portable-R68.zip
 
 :: Download plugins [These plugins used can spit out errors and is known to be broken on VapourSynth64-R62]
  .\python.exe .\vsrepo.py update -p  > nul
@@ -190,11 +190,11 @@ cd .\svt-av1
 
 :: tar -xf .\SVT-AV1-2.0.zip --strip-components 2 > nul
 
-:: Download SVT-AV1-PSY release ~2.0.0
-%Download-->% https://github.com/gianni-rosato/svt-av1-psy/releases/download/v2.0.0/SvtAv1EncApp-Windows-x64.7z -O SvtAv1EncApp-psy.7z
-%Extract-->% .\SvtAv1EncApp-psy.7z SvtAv1EncApp-Windows-x64\SvtAv1EncApp.exe > nul
-MOVE /y .\SvtAv1EncApp-Windows-x64\SvtAv1EncApp.exe SvtAv1EncApp.exe > nul
-rmdir /s /q .\SvtAv1EncApp-Windows-x64
+:: Download SVT-AV1-PSY release ~2.0.0-A
+%Download-->% https://github.com/gianni-rosato/svt-av1-psy/releases/download/v2.0.0-A/SvtAv1EncApp-Windows-x64.7z -O SvtAv1EncApp-psy.7z
+%Extract-->% .\SvtAv1EncApp-psy.7z SVT-PSY\Generic\SvtAv1EncApp.exe > nul
+MOVE /y .\SVT-PSY\Generic\SvtAv1EncApp.exe SvtAv1EncApp.exe > nul
+rmdir /s /q .\SVT-PSY
 
 :: Add reminder about using diffrent builds, forks, branches of encoders.
 echo 'If you want to use a diffrent build or version of an encoder, Just replace it using the same executable name.' > readme.txt
