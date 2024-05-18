@@ -24,7 +24,7 @@ for %%d in (
     ".\dependencies\av1an"
     ".\dependencies\bat"
     ".\dependencies\vapoursynth64"
-    ".\dependencies\ffmpeg-6.1.1"
+    ".\dependencies\ffmpeg-7.0"
     ".\dependencies\ffmpeg-latest"
     ".\dependencies\mkvtoolnix"
     ".\dependencies\svt-av1"
@@ -66,18 +66,18 @@ tar -xf .\bat.zip --strip-components 1 > nul
 del .\bat.zip
 
 cd ..\
-cd .\ffmpeg-6.1.1
+cd .\ffmpeg-7.0
 
-:: Download ffmpeg with shared libraries ~6.1.1
-%Download-->% https://github.com/GyanD/codexffmpeg/releases/download/6.1.1/ffmpeg-6.1.1-full_build-shared.7z -O ffmpeg-release-full-shared.7z
-%Extract-->% .\ffmpeg-release-full-shared.7z ffmpeg-6.1.1-full_build-shared\bin > nul
+:: Download ffmpeg with shared libraries ~7.0
+%Download-->% https://github.com/GyanD/codexffmpeg/releases/download/7.0/ffmpeg-7.0-full_build-shared.7z -O ffmpeg-release-full-shared.7z
+%Extract-->% .\ffmpeg-release-full-shared.7z ffmpeg-7.0-full_build-shared\bin > nul
 
 :: Move contents of bin
-for /R "ffmpeg-6.1.1-full_build-shared\bin" %%f in (*) do (
+for /R "ffmpeg-7.0-full_build-shared\bin" %%f in (*) do (
     move "%%f" "%destination%" > nul
 )
 
-rmdir /s /q .\ffmpeg-6.1.1-full_build-shared
+rmdir /s /q .\ffmpeg-7.0-full_build-shared
 
 cd ..\
 cd .\ffmpeg-latest
