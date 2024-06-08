@@ -14,6 +14,9 @@ set "Download-->=%AV1%\wget.exe -q -N --no-check-certificate --show-progress"
 :: Set 7zr command
 set "Extract-->=%AV1%\7zr.exe -y x"
 
+:: Set tar command
+set "Tar-->=C:\Windows\System32\tar.exe"
+
 :: Correct path
 cd "%AV1%"
 
@@ -62,7 +65,7 @@ cd .\bat
 
 :: Download bat
 %Download-->% https://github.com/sharkdp/bat/releases/download/v0.23.0/bat-v0.23.0-x86_64-pc-windows-msvc.zip -O bat.zip
-tar -xf .\bat.zip --strip-components 1 > nul
+%Tar-->% -xf .\bat.zip --strip-components 1 > nul
 del .\bat.zip
 
 cd ..\
@@ -154,12 +157,12 @@ cd .\vapoursynth64
 
 :: Download embedded Python ~3.12.3
 %Download-->% https://www.python.org/ftp/python/3.12.3/python-3.12.3-embed-amd64.zip
-tar -xf .\python-3.12.3-embed-amd64.zip
+%Tar-->% -xf .\python-3.12.3-embed-amd64.zip
 del .\python-3.12.3-embed-amd64.zip
 
 :: Download VapourSynth64 Portable ~R68
 %Download-->% https://github.com/vapoursynth/vapoursynth/releases/download/R68/VapourSynth64-Portable-R68.zip
-tar -xf .\VapourSynth64-Portable-R68.zip > nul
+%Tar-->% -xf .\VapourSynth64-Portable-R68.zip > nul
 del .\VapourSynth64-Portable-R68.zip
 
 :: install pip
@@ -196,7 +199,7 @@ cd .\svt-av1
 :: del downloadlink.txt > nul
 :: del raw.txt > nul
 
-:: tar -xf .\SVT-AV1-2.0.zip --strip-components 2 > nul
+:: %Tar-->% -xf .\SVT-AV1-2.0.zip --strip-components 2 > nul
 
 :: Download SVT-AV1-PSY release ~2.0.0-A
 %Download-->% https://github.com/gianni-rosato/svt-av1-psy/releases/download/v2.0.0-A/SvtAv1EncApp-Windows-x64.7z -O SvtAv1EncApp-psy.7z
