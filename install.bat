@@ -201,11 +201,9 @@ cd .\svt-av1
 
 :: %Tar-->% -xf .\SVT-AV1-2.0.zip --strip-components 2 > nul
 
-:: Download SVT-AV1-PSY release ~2.0.0-A
-%Download-->% https://github.com/gianni-rosato/svt-av1-psy/releases/download/v2.0.0-A/SvtAv1EncApp-Windows-x64.7z -O SvtAv1EncApp-psy.7z
-%Extract-->% .\SvtAv1EncApp-psy.7z SVT-PSY\Generic\SvtAv1EncApp.exe > nul
-MOVE /y .\SVT-PSY\Generic\SvtAv1EncApp.exe SvtAv1EncApp.exe > nul
-rmdir /s /q .\SVT-PSY
+:: Download SVT-AV1-PSY release ~2.1.0-A
+%Download-->% https://github.com/gianni-rosato/svt-av1-psy/releases/download/v2.1.0-A/SvtAv1EncApp-Windows-x64.7z -O SvtAv1EncApp-psy.7z
+%Extract-->% .\SvtAv1EncApp-psy.7z SvtAv1EncApp.exe > nul
 
 :: Add reminder about using different builds, forks, branches of encoders.
 echo "If you want to use a different build or version of an encoder, just replace it using the same executable name." > readme.txt
