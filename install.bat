@@ -27,7 +27,7 @@ for %%d in (
     ".\dependencies\av1an"
     ".\dependencies\bat"
     ".\dependencies\vapoursynth64"
-    ".\dependencies\ffmpeg-7.0"
+    ".\dependencies\ffmpeg-7.0.1"
     ".\dependencies\ffmpeg-latest"
     ".\dependencies\mkvtoolnix"
     ".\dependencies\svt-av1"
@@ -69,18 +69,18 @@ cd .\bat
 del .\bat.zip
 
 cd ..\
-cd .\ffmpeg-7.0
+cd .\ffmpeg-7.0.1
 
-:: Download ffmpeg with shared libraries ~7.0
-%Download-->% https://github.com/GyanD/codexffmpeg/releases/download/7.0/ffmpeg-7.0-full_build-shared.7z -O ffmpeg-release-full-shared.7z
-%Extract-->% .\ffmpeg-release-full-shared.7z ffmpeg-7.0-full_build-shared\bin > nul
+:: Download ffmpeg with shared libraries ~7.0.1
+%Download-->% https://github.com/GyanD/codexffmpeg/releases/download/7.0.1/ffmpeg-7.0.1-full_build-shared.7z -O ffmpeg-release-full-shared.7z
+%Extract-->% .\ffmpeg-release-full-shared.7z ffmpeg-7.0.1-full_build-shared\bin > nul
 
 :: Move contents of bin
-for /R "ffmpeg-7.0-full_build-shared\bin" %%f in (*) do (
+for /R "ffmpeg-7.0.1-full_build-shared\bin" %%f in (*) do (
     move "%%f" "%destination%" > nul
 )
 
-rmdir /s /q .\ffmpeg-7.0-full_build-shared
+rmdir /s /q .\ffmpeg-7.0.1-full_build-shared
 
 cd ..\
 cd .\ffmpeg-latest
@@ -101,8 +101,8 @@ for /d /r %%i in (*) do (
 
 cd ..\
 
-:: Download portable mkvtoolnix ~84.0
-%Download-->% https://mkvtoolnix.download/windows/releases/84.0/mkvtoolnix-64-bit-84.0.7z -O mkvtoolnix.7z
+:: Download portable mkvtoolnix ~85.0
+%Download-->% https://mkvtoolnix.download/windows/releases/85.0/mkvtoolnix-64-bit-85.0.7z -O mkvtoolnix.7z
 %Extract-->% .\mkvtoolnix.7z > nul
 del .\mkvtoolnix.7z
 
@@ -127,7 +127,7 @@ cd ..\
 cd .\x264
 
 :: Download x264 encoder
-%Download-->% https://artifacts.videolan.org/x264/release-win64/x264-r3190-7ed753b.exe -O x264.exe
+%Download-->% https://artifacts.videolan.org/x264/release-win64/x264-r3191-4613ac3.exe -O x264.exe
 
 :: Add reminder about using different builds, forks, branches of encoders.
 echo "If you want to use a different build or version of an encoder, just replace it using the same executable name." > readme.txt
@@ -136,8 +136,8 @@ cd ..\
 cd .\x265
 
 :: Download x265 encoder
-%Download-->% https://github.com/jpsdr/x265/releases/download/3.60.8/x265_r3_6_0_8.7z
-%Extract-->% .\x265_r3_6_0_8.7z > nul
+%Download-->% https://github.com/jpsdr/x265/releases/download/3.60.28/x265_r3_6_0_28.7z
+%Extract-->% .\x265_r3_6_0_28.7z > nul
 MOVE /y .\Winthread\Multilib\Release\x265_x64.exe x265.exe > nul
 rmdir /s /q .\winthread
 rmdir /s /q .\llvm
@@ -155,10 +155,10 @@ cd .\rav1e
 cd ..\
 cd .\vapoursynth64
 
-:: Download embedded Python ~3.12.3
-%Download-->% https://www.python.org/ftp/python/3.12.3/python-3.12.3-embed-amd64.zip
-%Tar-->% -xf .\python-3.12.3-embed-amd64.zip
-del .\python-3.12.3-embed-amd64.zip
+:: Download embedded Python ~3.12.4
+%Download-->% https://www.python.org/ftp/python/3.12.4/python-3.12.4-embed-amd64.zip
+%Tar-->% -xf .\python-3.12.4-embed-amd64.zip
+del .\python-3.12.4-embed-amd64.zip
 
 :: Download VapourSynth64 Portable ~R68
 %Download-->% https://github.com/vapoursynth/vapoursynth/releases/download/R68/VapourSynth64-Portable-R68.zip
