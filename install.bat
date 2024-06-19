@@ -31,17 +31,6 @@ for %%d in (
     ".\dependencies\ffmpeg-latest"
     ".\dependencies\mkvtoolnix"
     ".\dependencies\svt-av1"
-    ".\dependencies\vmaf"
-    ".\dependencies\aom"
-    ".\dependencies\rav1e"
-    ".\dependencies\x264"
-    ".\dependencies\x265"
-    ".\scripts\ffmpeg\input"
-    ".\scripts\ffmpeg\input\completed-inputs"
-    ".\scripts\ffmpeg\output"
-    ".\scripts\ffmpeg-vp9\input"
-    ".\scripts\ffmpeg-vp9\input\completed-inputs"
-    ".\scripts\ffmpeg-vp9\output"
     ".\scripts\av1an-batch\input"
     ".\scripts\av1an-batch\input\completed-inputs"
     ".\scripts\av1an-batch\output"
@@ -106,53 +95,6 @@ cd ..\
 %Extract-->% .\mkvtoolnix.7z > nul
 del .\mkvtoolnix.7z
 
-cd .\aom
-
-:: Download aom av1 encoder
-%Download-->% https://github.com/BlueSwordM/aom-av1-psy/releases/download/aom-av1-psy-1.0.0/Skylake.Windows.aom-av1-psy-Windows-Endless_Possibility-LTO-2022-09-06.7z
-%Extract-->% Skylake.Windows.aom-av1-psy-Windows-Endless_Possibility-LTO-2022-09-06.7z > nul
-MOVE /y aom-av1-psy-Windows-Endless_Possibility-Skylake-LTO-2022-09-06.exe aomenc.exe > nul
-
-:: Add reminder about using different builds, forks, branches of encoders.
-echo "If you want to use a different build or version of an encoder, just replace it using the same executable name." > readme.txt
-
-cd ..\
-cd .\vmaf
-
-:: Download vmaf model
-%Download-->% https://raw.githubusercontent.com/Netflix/vmaf/master/model/vmaf_v0.6.1neg.json
-%Download-->% https://raw.githubusercontent.com/Netflix/vmaf/master/model/vmaf_4k_v0.6.1neg.json
-
-cd ..\
-cd .\x264
-
-:: Download x264 encoder
-%Download-->% https://artifacts.videolan.org/x264/release-win64/x264-r3191-4613ac3.exe -O x264.exe
-
-:: Add reminder about using different builds, forks, branches of encoders.
-echo "If you want to use a different build or version of an encoder, just replace it using the same executable name." > readme.txt
-
-cd ..\
-cd .\x265
-
-:: Download x265 encoder
-%Download-->% https://github.com/jpsdr/x265/releases/download/3.60.28/x265_r3_6_0_28.7z
-%Extract-->% .\x265_r3_6_0_28.7z > nul
-MOVE /y .\Winthread\Multilib\Release\x265_x64.exe x265.exe > nul
-rmdir /s /q .\winthread
-rmdir /s /q .\llvm
-del ReadMe.txt
-
-:: Add reminder about using different builds, forks, branches of encoders.
-echo "If you want to use a different build or version of an encoder, just replace it using the same executable name." > readme.txt
-
-cd ..\
-cd .\rav1e
-
-:: Download rav1e
-%Download-->% https://github.com/xiph/rav1e/releases/latest/download/rav1e.exe
-
-cd ..\
 cd .\vapoursynth64
 
 :: Download embedded Python ~3.12.4
