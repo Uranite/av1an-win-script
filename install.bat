@@ -28,7 +28,6 @@ for %%d in (
     ".\dependencies\bat"
     ".\dependencies\vapoursynth64"
     ".\dependencies\ffmpeg-7.0.1"
-    ".\dependencies\ffmpeg-latest"
     ".\dependencies\mkvtoolnix"
     ".\dependencies\svt-av1"
     ".\dependencies\vpxenc"
@@ -71,23 +70,6 @@ for /R "ffmpeg-7.0.1-full_build-shared\bin" %%f in (*) do (
 )
 
 rmdir /s /q .\ffmpeg-7.0.1-full_build-shared
-
-cd ..\
-cd .\ffmpeg-latest
-
-:: Download the latest ffmpeg bins 
-%Download-->% https://www.gyan.dev/ffmpeg/builds/ffmpeg-git-essentials.7z -O ffmpeg-latest.7z
-%Extract-->% .\ffmpeg-latest.7z *.exe -r > nul
-
-:: Move files out of bin
-for /r %%i in (*) do (
-    move "%%i" "%%~nxi" > nul
-)
-
-:: Clean up
-for /d /r %%i in (*) do (
-    rd /s /q "%%i" > nul
-)
 
 cd ..\
 
