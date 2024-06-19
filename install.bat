@@ -31,6 +31,7 @@ for %%d in (
     ".\dependencies\ffmpeg-latest"
     ".\dependencies\mkvtoolnix"
     ".\dependencies\svt-av1"
+    ".\dependencies\vpxenc"
     ".\scripts\av1an-batch\input"
     ".\scripts\av1an-batch\input\completed-inputs"
     ".\scripts\av1an-batch\output"
@@ -95,6 +96,13 @@ cd ..\
 %Extract-->% .\mkvtoolnix.7z > nul
 del .\mkvtoolnix.7z
 
+cd .\vpxenc
+
+:: Download vpxenc
+%Download-->% https://jeremylee.sh/bins/vpx.7z
+%Tar-->% -xf .\vpx.7z vpxenc.exe > nul
+
+cd ..\
 cd .\vapoursynth64
 
 :: Download embedded Python ~3.12.4
