@@ -8,8 +8,8 @@ setlocal enabledelayedexpansion
 :: Set path 
 set "AV1=%~dp0"
 
-:: Set Wget command
-set "Download-->=%AV1%\wget.exe -q -N --no-check-certificate --show-progress"
+:: Set aria2c command
+set "Download-->=%AV1%\aria2c.exe -x 5 --console-log-level=warn --check-certificate=false --auto-file-renaming=false"
 
 :: Set 7zr command
 set "Extract-->=%AV1%\7zr.exe -y x"
@@ -50,8 +50,10 @@ for %%d in (
 
 popd
 
-:: Download portable Wget
-curl -O -C - --progress-bar https://web.archive.org/web/20230511215002/https://eternallybored.org/misc/wget/1.21.4/64/wget.exe
+:: Download portable aria2c
+curl -LOJ --progress-bar https://github.com/aria2/aria2/releases/download/release-1.37.0/aria2-1.37.0-win-64bit-build1.zip
+%Tar-->% -xf .\aria2-1.37.0-win-64bit-build1.zip --strip-components 1 aria2-1.37.0-win-64bit-build1/aria2c.exe > nul
+del .\aria2-1.37.0-win-64bit-build1.zip
 
 :: Download portable 7zip
 %Download-->% https://www.7-zip.org/a/7zr.exe
@@ -65,7 +67,7 @@ cd ..\
 cd .\bat
 
 :: Download bat
-%Download-->% https://github.com/sharkdp/bat/releases/download/v0.23.0/bat-v0.23.0-x86_64-pc-windows-msvc.zip -O bat.zip
+%Download-->% https://github.com/sharkdp/bat/releases/download/v0.23.0/bat-v0.23.0-x86_64-pc-windows-msvc.zip -o bat.zip
 %Tar-->% -xf .\bat.zip --strip-components 1 > nul
 del .\bat.zip
 
@@ -73,7 +75,7 @@ cd ..\
 cd .\ffmpeg-7.0.1
 
 :: Download ffmpeg with shared libraries ~7.0.1
-%Download-->% https://github.com/GyanD/codexffmpeg/releases/download/7.0.1/ffmpeg-7.0.1-full_build-shared.7z -O ffmpeg-release-full-shared.7z
+%Download-->% https://github.com/GyanD/codexffmpeg/releases/download/7.0.1/ffmpeg-7.0.1-full_build-shared.7z -o ffmpeg-release-full-shared.7z
 %Extract-->% .\ffmpeg-release-full-shared.7z ffmpeg-7.0.1-full_build-shared\bin > nul
 
 :: Move contents of bin
@@ -87,7 +89,7 @@ cd ..\
 cd .\ffmpeg-latest
 
 :: Download the latest ffmpeg bins 
-%Download-->% https://www.gyan.dev/ffmpeg/builds/ffmpeg-git-essentials.7z -O ffmpeg-latest.7z
+%Download-->% https://www.gyan.dev/ffmpeg/builds/ffmpeg-git-essentials.7z -o ffmpeg-latest.7z
 %Extract-->% .\ffmpeg-latest.7z *.exe -r > nul
 
 :: Move files out of bin
@@ -103,7 +105,7 @@ for /d /r %%i in (*) do (
 cd ..\
 
 :: Download portable mkvtoolnix ~85.0
-%Download-->% https://mkvtoolnix.download/windows/releases/85.0/mkvtoolnix-64-bit-85.0.7z -O mkvtoolnix.7z
+%Download-->% https://mkvtoolnix.download/windows/releases/85.0/mkvtoolnix-64-bit-85.0.7z -o mkvtoolnix.7z
 %Extract-->% .\mkvtoolnix.7z > nul
 del .\mkvtoolnix.7z
 
@@ -128,7 +130,7 @@ cd ..\
 cd .\x264
 
 :: Download x264 encoder
-%Download-->% https://artifacts.videolan.org/x264/release-win64/x264-r3191-4613ac3.exe -O x264.exe
+%Download-->% https://artifacts.videolan.org/x264/release-win64/x264-r3191-4613ac3.exe -o x264.exe
 
 :: Add reminder about using different builds, forks, branches of encoders.
 echo "If you want to use a different build or version of an encoder, just replace it using the same executable name." > readme.txt
@@ -191,7 +193,7 @@ cd .\svt-av1
 :: Uncomment to grab from build artifacts
 
 :: Download SVT-AV1 release ~2.0.0; Artifacts sometimes expire
-:: curl -sLf "https://gitlab.com/AOMediaCodec/SVT-AV1/-/jobs/6387649298/artifacts/download?file_type=archive" -O NUL -w "%%{url_effective}" > ./raw.txt
+:: curl -sLf "https://gitlab.com/AOMediaCodec/SVT-AV1/-/jobs/6387649298/artifacts/download?file_type=archive" -o NUL -w "%%{url_effective}" > ./raw.txt
 
 :: Grab link
 :: (for /f "usebackq delims=" %%a in ("raw.txt") do (
@@ -200,7 +202,7 @@ cd .\svt-av1
 ::     echo !line!
 :: )) > "downloadlink.txt"
 
-:: %Download-->% -i .\downloadlink.txt -O SVT-AV1-2.0.zip
+:: %Download-->% -i .\downloadlink.txt -o SVT-AV1-2.0.zip
 
 :: Clean up
 :: del download > nul 2>&1
@@ -210,7 +212,7 @@ cd .\svt-av1
 :: %Tar-->% -xf .\SVT-AV1-2.0.zip --strip-components 2 > nul
 
 :: Download SVT-AV1-PSY release ~2.1.0-A
-%Download-->% https://github.com/gianni-rosato/svt-av1-psy/releases/download/v2.1.0-A/SvtAv1EncApp-Windows-x64.7z -O SvtAv1EncApp-psy.7z
+%Download-->% https://github.com/gianni-rosato/svt-av1-psy/releases/download/v2.1.0-A/SvtAv1EncApp-Windows-x64.7z -o SvtAv1EncApp-psy.7z
 %Tar-->% -xf .\SvtAv1EncApp-psy.7z SvtAv1EncApp.exe > nul
 
 :: Add reminder about using different builds, forks, branches of encoders.
@@ -219,8 +221,7 @@ echo "If you want to use a different build or version of an encoder, just replac
 popd
 
 :: Clean up
-del .wget-hsts > nul
-del wget.exe > nul
+del aria2c.exe > nul
 del 7zr.exe > nul
 del preview.webp > nul
 
