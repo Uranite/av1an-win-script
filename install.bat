@@ -36,6 +36,7 @@ for %%d in (
     ".\dependencies\rav1e"
     ".\dependencies\x264"
     ".\dependencies\x265"
+    ".\dependencies\vpxenc"
     ".\scripts\ffmpeg\input"
     ".\scripts\ffmpeg\input\completed-inputs"
     ".\scripts\ffmpeg\output"
@@ -145,6 +146,13 @@ del ReadMe.txt
 
 :: Add reminder about using different builds, forks, branches of encoders.
 echo "If you want to use a different build or version of an encoder, just replace it using the same executable name." > readme.txt
+
+cd ..\
+cd .\vpxenc
+
+:: Download vpxenc
+%Download-->% https://jeremylee.sh/bins/vpx.7z
+%Tar-->% -xf .\vpx.7z vpxenc.exe > nul
 
 cd ..\
 cd .\rav1e
