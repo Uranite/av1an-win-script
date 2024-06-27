@@ -152,7 +152,7 @@ cd .\vpxenc
 
 :: Download vpxenc
 %Download-->% https://jeremylee.sh/bins/vpx.7z
-%Tar-->% -xf .\vpx.7z vpxenc.exe > nul
+%Extract-->% .\vpx.7z vpxenc.exe > nul
 
 cd ..\
 cd .\rav1e
