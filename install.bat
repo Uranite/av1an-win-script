@@ -183,7 +183,7 @@ echo import site >> python312._pth
 
 :: Download plugins
  .\python.exe .\vsrepo.py update -p  > nul
- .\python.exe .\vsrepo.py install lsmas ffms2 -p  > nul
+ .\python.exe .\vsrepo.py install lsmas ffms2 bestsource -p  > nul
 
 cd ..\
 cd .\svt-av1
