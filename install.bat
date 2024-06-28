@@ -9,7 +9,7 @@ setlocal enabledelayedexpansion
 set "AV1=%~dp0"
 
 :: Set aria2c command
-set "Download-->=%AV1%\aria2c.exe -x 5 --console-log-level=warn --check-certificate=false --auto-file-renaming=false"
+set "Download-->=%AV1%\aria2c.exe -x16 -j16 -s16 --console-log-level=warn --check-certificate=false --auto-file-renaming=false"
 
 :: Set 7zr command
 set "Extract-->=%AV1%\7zr.exe -y x"
