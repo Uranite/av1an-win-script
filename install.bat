@@ -27,7 +27,7 @@ for %%d in (
     ".\dependencies\av1an"
     ".\dependencies\bat"
     ".\dependencies\vapoursynth64"
-    ".\dependencies\ffmpeg-7.0.1"
+    ".\dependencies\ffmpeg-7.0.2"
     ".\dependencies\ffmpeg-latest"
     ".\dependencies\mkvtoolnix"
     ".\dependencies\svt-av1"
@@ -65,23 +65,23 @@ cd ..\
 cd .\bat
 
 :: Download bat
-%Download-->% https://github.com/sharkdp/bat/releases/download/v0.23.0/bat-v0.23.0-x86_64-pc-windows-msvc.zip -O bat.zip
+%Download-->% https://github.com/sharkdp/bat/releases/download/v0.24.0/bat-v0.24.0-x86_64-pc-windows-msvc.zip -O bat.zip
 %Tar-->% -xf .\bat.zip --strip-components 1 > nul
 del .\bat.zip
 
 cd ..\
-cd .\ffmpeg-7.0.1
+cd .\ffmpeg-7.0.2
 
-:: Download ffmpeg with shared libraries ~7.0.1
-%Download-->% https://github.com/GyanD/codexffmpeg/releases/download/7.0.1/ffmpeg-7.0.1-full_build-shared.7z -O ffmpeg-release-full-shared.7z
-%Extract-->% .\ffmpeg-release-full-shared.7z ffmpeg-7.0.1-full_build-shared\bin > nul
+:: Download ffmpeg with shared libraries ~7.0.2
+%Download-->% https://github.com/GyanD/codexffmpeg/releases/download/7.0.2/ffmpeg-7.0.2-full_build-shared.7z -O ffmpeg-release-full-shared.7z
+%Extract-->% .\ffmpeg-release-full-shared.7z ffmpeg-7.0.2-full_build-shared\bin > nul
 
 :: Move contents of bin
-for /R "ffmpeg-7.0.1-full_build-shared\bin" %%f in (*) do (
+for /R "ffmpeg-7.0.2-full_build-shared\bin" %%f in (*) do (
     move "%%f" "%destination%" > nul
 )
 
-rmdir /s /q .\ffmpeg-7.0.1-full_build-shared
+rmdir /s /q .\ffmpeg-7.0.2-full_build-shared
 
 cd ..\
 cd .\ffmpeg-latest
@@ -102,8 +102,8 @@ for /d /r %%i in (*) do (
 
 cd ..\
 
-:: Download portable mkvtoolnix ~85.0
-%Download-->% https://mkvtoolnix.download/windows/releases/85.0/mkvtoolnix-64-bit-85.0.7z -O mkvtoolnix.7z
+:: Download portable mkvtoolnix ~87.0
+%Download-->% https://mkvtoolnix.download/windows/releases/87.0/mkvtoolnix-64-bit-87.0.7z -O mkvtoolnix.7z
 %Extract-->% .\mkvtoolnix.7z > nul
 del .\mkvtoolnix.7z
 
@@ -137,8 +137,8 @@ cd ..\
 cd .\x265
 
 :: Download x265 encoder
-%Download-->% https://github.com/jpsdr/x265/releases/download/3.60.28/x265_r3_6_0_28.7z
-%Extract-->% .\x265_r3_6_0_28.7z > nul
+%Download-->% https://github.com/jpsdr/x265/releases/download/4.00.004/x265_r4_0_0_004.7z
+%Extract-->% .\x265_r4_0_0_004.7z > nul
 MOVE /y .\Winthread\Multilib\Release\x265_x64.exe x265.exe > nul
 rmdir /s /q .\winthread
 rmdir /s /q .\llvm
@@ -163,15 +163,15 @@ cd .\rav1e
 cd ..\
 cd .\vapoursynth64
 
-:: Download embedded Python ~3.12.4
-%Download-->% https://www.python.org/ftp/python/3.12.4/python-3.12.4-embed-amd64.zip
-%Tar-->% -xf .\python-3.12.4-embed-amd64.zip
-del .\python-3.12.4-embed-amd64.zip
+:: Download embedded Python ~3.12.6
+%Download-->% https://www.python.org/ftp/python/3.12.6/python-3.12.6-embed-amd64.zip
+%Tar-->% -xf .\python-3.12.6-embed-amd64.zip
+del .\python-3.12.6-embed-amd64.zip
 
-:: Download VapourSynth64 Portable ~R68
-%Download-->% https://github.com/vapoursynth/vapoursynth/releases/download/R68/VapourSynth64-Portable-R68.zip
-%Tar-->% -xf .\VapourSynth64-Portable-R68.zip > nul
-del .\VapourSynth64-Portable-R68.zip
+:: Download VapourSynth64 Portable ~R70
+%Download-->% https://github.com/vapoursynth/vapoursynth/releases/download/R70/VapourSynth64-Portable-R70.zip
+%Tar-->% -xf .\VapourSynth64-Portable-R70.zip > nul
+del .\VapourSynth64-Portable-R70.zip
 
 :: install pip
 echo import site >> python312._pth
@@ -179,7 +179,7 @@ echo import site >> python312._pth
 .\python.exe get-pip.py --no-warn-script-location > nul
 
 :: install VapourSynth64 wheel
-.\Scripts\pip.exe install .\wheel\VapourSynth-68-cp312-cp312-win_amd64.whl --no-warn-script-location  > nul
+.\Scripts\pip.exe install .\wheel\VapourSynth-70-cp312-cp312-win_amd64.whl --no-warn-script-location  > nul
 
 :: Download plugins
  .\python.exe .\vsrepo.py update -p  > nul
@@ -209,9 +209,9 @@ cd .\svt-av1
 
 :: %Tar-->% -xf .\SVT-AV1-2.0.zip --strip-components 2 > nul
 
-:: Download SVT-AV1-PSY release ~2.1.0-A
-%Download-->% https://github.com/gianni-rosato/svt-av1-psy/releases/download/v2.1.0-A/SvtAv1EncApp-Windows-x64.7z -O SvtAv1EncApp-psy.7z
-%Tar-->% -xf .\SvtAv1EncApp-psy.7z SvtAv1EncApp.exe > nul
+:: Download SVT-AV1-PSY release ~2.2.1
+%Download-->% https://github.com/user-attachments/files/17087823/SvtAv1EncApp.zip
+%Tar-->% -xf .\SvtAv1EncApp.zip SvtAv1EncApp.exe > nul
 
 :: Add reminder about using different builds, forks, branches of encoders.
 echo "If you want to use a different build or version of an encoder, just replace it using the same executable name." > readme.txt
