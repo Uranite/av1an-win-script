@@ -102,8 +102,8 @@ for /d /r %%i in (*) do (
 
 cd ..\
 
-:: Download portable mkvtoolnix ~87.0
-%Download-->% https://mkvtoolnix.download/windows/releases/87.0/mkvtoolnix-64-bit-87.0.7z -O mkvtoolnix.7z
+:: Download portable mkvtoolnix ~88.0
+%Download-->% https://mkvtoolnix.download/windows/releases/88.0/mkvtoolnix-64-bit-88.0.7z -O mkvtoolnix.7z
 %Extract-->% .\mkvtoolnix.7z > nul
 del .\mkvtoolnix.7z
 
@@ -128,7 +128,7 @@ cd ..\
 cd .\x264
 
 :: Download x264 encoder
-%Download-->% https://artifacts.videolan.org/x264/release-win64/x264-r3191-4613ac3.exe -O x264.exe
+%Download-->% https://artifacts.videolan.org/x264/release-win64/x264-r3198-da14df5.exe -O x264.exe
 
 :: Add reminder about using different builds, forks, branches of encoders.
 echo "If you want to use a different build or version of an encoder, just replace it using the same executable name." > readme.txt
@@ -137,8 +137,8 @@ cd ..\
 cd .\x265
 
 :: Download x265 encoder
-%Download-->% https://github.com/jpsdr/x265/releases/download/4.00.004/x265_r4_0_0_004.7z
-%Extract-->% .\x265_r4_0_0_004.7z > nul
+%Download-->% https://github.com/jpsdr/x265/releases/download/4.00.024/x265_r4_0_0_024.7z
+%Extract-->% .\x265_r4_0_0_024.7z > nul
 MOVE /y .\Winthread\Multilib\Release\x265_x64.exe x265.exe > nul
 rmdir /s /q .\winthread
 rmdir /s /q .\llvm
@@ -163,10 +163,10 @@ cd .\rav1e
 cd ..\
 cd .\vapoursynth64
 
-:: Download embedded Python ~3.12.6
-%Download-->% https://www.python.org/ftp/python/3.12.6/python-3.12.6-embed-amd64.zip
-%Tar-->% -xf .\python-3.12.6-embed-amd64.zip
-del .\python-3.12.6-embed-amd64.zip
+:: Download embedded Python ~3.12.7
+%Download-->% https://www.python.org/ftp/python/3.12.7/python-3.12.7-embed-amd64.zip
+%Tar-->% -xf .\python-3.12.7-embed-amd64.zip
+del .\python-3.12.7-embed-amd64.zip
 
 :: Download VapourSynth64 Portable ~R70
 %Download-->% https://github.com/vapoursynth/vapoursynth/releases/download/R70/VapourSynth64-Portable-R70.zip
@@ -209,9 +209,10 @@ cd .\svt-av1
 
 :: %Tar-->% -xf .\SVT-AV1-2.0.zip --strip-components 2 > nul
 
-:: Download SVT-AV1-PSY release ~2.2.1
-%Download-->% https://github.com/user-attachments/files/17087823/SvtAv1EncApp.zip
-%Tar-->% -xf .\SvtAv1EncApp.zip SvtAv1EncApp.exe > nul
+:: Download SVT-AV1-PSY release ~2.3.0
+%Download-->% https://github.com/user-attachments/files/17579354/SvtAv1EncApp-windows-all-march-but-znver3.zip
+%Tar-->% -xf .\SvtAv1EncApp-windows-all-march-but-znver3.zip SvtAv1EncApp-windows-all-march-but-znver3.7z > nul
+%AV1%\7zr.exe -y e .\SvtAv1EncApp-windows-all-march-but-znver3.7z x86-64\SvtAv1EncApp.exe > nul
 
 :: Add reminder about using different builds, forks, branches of encoders.
 echo "If you want to use a different build or version of an encoder, just replace it using the same executable name." > readme.txt
