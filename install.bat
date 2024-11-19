@@ -109,10 +109,9 @@ del .\mkvtoolnix.7z
 
 cd .\aom
 
-:: Download aom av1 encoder
-%Download-->% https://github.com/BlueSwordM/aom-av1-psy/releases/download/aom-av1-psy-1.0.0/Skylake.Windows.aom-av1-psy-Windows-Endless_Possibility-LTO-2022-09-06.7z
-%Extract-->% Skylake.Windows.aom-av1-psy-Windows-Endless_Possibility-LTO-2022-09-06.7z > nul
-MOVE /y aom-av1-psy-Windows-Endless_Possibility-Skylake-LTO-2022-09-06.exe aomenc.exe > nul
+:: Download aom-psy101 encoder (aom-av1 fork)
+%Download-->% https://github.com/Uranite/aom-psy101-win-build/releases/download/latest/aom_build.7z
+%AV1%\7zr.exe -y e .\aom_build.7z x86-64\aomenc.exe > nul
 
 :: Add reminder about using different builds, forks, branches of encoders.
 echo "If you want to use a different build or version of an encoder, just replace it using the same executable name." > readme.txt
