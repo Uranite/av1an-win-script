@@ -41,7 +41,7 @@ set /p args=<%AV1%\params.txt
 
 :: Recursively encode contents in input
 set /a queue=1
-for %%f in (input\*.webm input\*.mp4 input\*.mkv input\*.mov) do (
+for %%f in (input\*.webm input\*.mp4 input\*.mkv input\*.mov input\*.avi input\*.ts input\*.m2ts) do (
 
     echo -----------------------------------
     echo  Encoding ^| !queueCounter! left in queue
