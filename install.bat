@@ -27,7 +27,7 @@ for %%d in (
     ".\dependencies\av1an"
     ".\dependencies\bat"
     ".\dependencies\vapoursynth64"
-    ".\dependencies\ffmpeg-7.0.2"
+    ".\dependencies\ffmpeg-7.1.1"
     ".\dependencies\ffmpeg-latest"
     ".\dependencies\mkvtoolnix"
     ".\dependencies\svt-av1"
@@ -65,23 +65,23 @@ cd ..\
 cd .\bat
 
 :: Download bat
-%Download-->% https://github.com/sharkdp/bat/releases/download/v0.24.0/bat-v0.24.0-x86_64-pc-windows-msvc.zip -O bat.zip
+%Download-->% https://github.com/sharkdp/bat/releases/download/v0.25.0/bat-v0.25.0-x86_64-pc-windows-msvc.zip -O bat.zip
 %Tar-->% -xf .\bat.zip --strip-components 1 > nul
 del .\bat.zip
 
 cd ..\
-cd .\ffmpeg-7.0.2
+cd .\ffmpeg-7.1.1
 
-:: Download ffmpeg with shared libraries ~7.0.2
-%Download-->% https://github.com/GyanD/codexffmpeg/releases/download/7.0.2/ffmpeg-7.0.2-full_build-shared.7z -O ffmpeg-release-full-shared.7z
-%Extract-->% .\ffmpeg-release-full-shared.7z ffmpeg-7.0.2-full_build-shared\bin > nul
+:: Download ffmpeg with shared libraries ~7.1.1
+%Download-->% https://github.com/GyanD/codexffmpeg/releases/download/7.1.1/ffmpeg-7.1.1-full_build-shared.7z -O ffmpeg-release-full-shared.7z
+%Extract-->% .\ffmpeg-release-full-shared.7z ffmpeg-7.1.1-full_build-shared\bin > nul
 
 :: Move contents of bin
-for /R "ffmpeg-7.0.2-full_build-shared\bin" %%f in (*) do (
+for /R "ffmpeg-7.1.1-full_build-shared\bin" %%f in (*) do (
     move "%%f" "%destination%" > nul
 )
 
-rmdir /s /q .\ffmpeg-7.0.2-full_build-shared
+rmdir /s /q .\ffmpeg-7.1.1-full_build-shared
 
 cd ..\
 cd .\ffmpeg-latest
@@ -102,8 +102,8 @@ for /d /r %%i in (*) do (
 
 cd ..\
 
-:: Download portable mkvtoolnix ~88.0
-%Download-->% https://mkvtoolnix.download/windows/releases/88.0/mkvtoolnix-64-bit-88.0.7z -O mkvtoolnix.7z
+:: Download portable mkvtoolnix ~93.0
+%Download-->% https://mkvtoolnix.download/windows/releases/93.0/mkvtoolnix-64-bit-93.0.7z -O mkvtoolnix.7z
 %Extract-->% .\mkvtoolnix.7z > nul
 del .\mkvtoolnix.7z
 
@@ -127,7 +127,7 @@ cd ..\
 cd .\x264
 
 :: Download x264 encoder
-%Download-->% https://artifacts.videolan.org/x264/release-win64/x264-r3198-da14df5.exe -O x264.exe
+%Download-->% https://artifacts.videolan.org/x264/release-win64/x264-r3222-b35605a.exe -O x264.exe
 
 :: Add reminder about using different builds, forks, branches of encoders.
 echo "If you want to use a different build or version of an encoder, just replace it using the same executable name." > readme.txt
@@ -136,8 +136,8 @@ cd ..\
 cd .\x265
 
 :: Download x265 encoder
-%Download-->% https://github.com/jpsdr/x265/releases/download/4.00.024/x265_r4_0_0_024.7z
-%Extract-->% .\x265_r4_0_0_024.7z > nul
+%Download-->% https://github.com/jpsdr/x265/releases/download/4.1.0.054/x265_r4_1_0_054.7z
+%Extract-->% .\x265_r4_1_0_054.7z > nul
 MOVE /y .\Winthread\Multilib\Release\x265_x64.exe x265.exe > nul
 rmdir /s /q .\winthread
 rmdir /s /q .\llvm
@@ -162,27 +162,27 @@ cd .\rav1e
 cd ..\
 cd .\vapoursynth64
 
-:: Download embedded Python ~3.12.7
-%Download-->% https://www.python.org/ftp/python/3.12.7/python-3.12.7-embed-amd64.zip
-%Tar-->% -xf .\python-3.12.7-embed-amd64.zip
-del .\python-3.12.7-embed-amd64.zip
+:: Download embedded Python ~3.13.5
+%Download-->% https://www.python.org/ftp/python/3.13.5/python-3.13.5-embed-amd64.zip
+%Tar-->% -xf .\python-3.13.5-embed-amd64.zip
+del .\python-3.13.5-embed-amd64.zip
 
-:: Download VapourSynth64 Portable ~R70
-%Download-->% https://github.com/vapoursynth/vapoursynth/releases/download/R70/VapourSynth64-Portable-R70.zip
-%Tar-->% -xf .\VapourSynth64-Portable-R70.zip > nul
-del .\VapourSynth64-Portable-R70.zip
+:: Download VapourSynth64 Portable ~R72
+%Download-->% https://github.com/vapoursynth/vapoursynth/releases/download/R72/VapourSynth64-Portable-R72.zip
+%Tar-->% -xf .\VapourSynth64-Portable-R72.zip > nul
+del .\VapourSynth64-Portable-R72.zip
 
 :: install pip
-echo import site >> python312._pth
+echo import site >> python313._pth
 %Download-->% https://bootstrap.pypa.io/get-pip.py
 .\python.exe get-pip.py --no-warn-script-location > nul
 
 :: install VapourSynth64 wheel
-.\Scripts\pip.exe install .\wheel\VapourSynth-70-cp312-cp312-win_amd64.whl --no-warn-script-location  > nul
+.\Scripts\pip.exe install .\wheel\vapoursynth-72-cp312-abi3-win_amd64.whl --no-warn-script-location  > nul
 
 :: Download plugins
- .\python.exe .\vsrepo.py update -p  > nul
- .\python.exe .\vsrepo.py install lsmas ffms2 bestsource -p
+.\python.exe .\vsrepo.py update -p  > nul
+.\python.exe .\vsrepo.py install lsmas ffms2 bestsource -p
 
 cd ..\
 cd .\svt-av1
@@ -208,10 +208,16 @@ cd .\svt-av1
 
 :: %Tar-->% -xf .\SVT-AV1-2.0.zip --strip-components 2 > nul
 
-:: Download SVT-AV1-PSY release ~2.3.0
-%Download-->% https://github.com/user-attachments/files/17579354/SvtAv1EncApp-windows-all-march-but-znver3.zip
-%Tar-->% -xf .\SvtAv1EncApp-windows-all-march-but-znver3.zip SvtAv1EncApp-windows-all-march-but-znver3.7z > nul
-%AV1%\7zr.exe -y e .\SvtAv1EncApp-windows-all-march-but-znver3.7z x86-64\SvtAv1EncApp.exe > nul
+:: Download SVT-AV1-PSY release ~3.0.2
+set "BASE=svt-av1-psy_v3.0.2-1-g21db3f7_2025-04-20_10.02.31_MULTI-MARCH_av1an-pgo_clang20.1.0_injected"
+set "ZIP=%BASE%.zip"
+set "ARCHIVE=%BASE%.7z"
+set "FILES=x86-64\SvtAv1EncApp.exe x86-64\mimalloc.dll x86-64\mimalloc-redirect.dll"
+
+%Download-->% https://github.com/user-attachments/files/19824692/%ZIP%
+%Tar-->% -xf .\%ZIP% %ARCHIVE% > nul
+%AV1%\7zr.exe -y e .\%ARCHIVE% %FILES% > nul
+
 
 :: Add reminder about using different builds, forks, branches of encoders.
 echo "If you want to use a different build or version of an encoder, just replace it using the same executable name." > readme.txt

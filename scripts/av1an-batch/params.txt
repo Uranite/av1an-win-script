@@ -1,1 +1,1 @@
--e svt-av1 -y --resume --verbose -c mkvmerge -m lsmash -a " -c:a copy " -v " --preset 4 --crf 25 --rc 0 "
+-e svt-av1 -y --resume --verbose -c mkvmerge -m ffms2 -a "-c:a copy" -v "--keyint 0 --preset 4 --crf 25"
