@@ -182,7 +182,7 @@ echo import site >> python313._pth
 
 :: Download plugins
 .\python.exe .\vsrepo.py update -p  > nul
-.\python.exe .\vsrepo.py install lsmas ffms2 bestsource -p
+.\python.exe .\vsrepo.py install lsmas ffms2 bestsource vszip julek -p
 
 cd ..\
 cd .\svt-av1
