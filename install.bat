@@ -48,8 +48,6 @@ for %%d in (
     ".\scripts\av1an-batch\output"
 ) do if not exist "%%~d" mkdir "%%~d"
 
-popd
-
 :: Download portable Wget
 curl -O -C - --progress-bar https://web.archive.org/web/20230511215002/https://eternallybored.org/misc/wget/1.21.4/64/wget.exe
 
@@ -78,7 +76,7 @@ cd .\ffmpeg-7.1.1
 
 :: Move contents of bin
 for /R "ffmpeg-7.1.1-full_build-shared\bin" %%f in (*) do (
-    move "%%f" "%destination%" > nul
+    move "%%f" "." > nul
 )
 
 rmdir /s /q .\ffmpeg-7.1.1-full_build-shared
@@ -114,7 +112,7 @@ cd .\aom
 %AV1%\7zr.exe -y e .\aom_build.7z x86-64\aomenc.exe > nul
 
 :: Add reminder about using different builds, forks, branches of encoders.
-echo "If you want to use a different build or version of an encoder, just replace it using the same executable name." > readme.txt
+echo If you want to use a different build or version of an encoder, just replace it using the same executable name. > readme.txt
 
 cd ..\
 cd .\vmaf
@@ -130,7 +128,7 @@ cd .\x264
 %Download-->% https://artifacts.videolan.org/x264/release-win64/x264-r3222-b35605a.exe -O x264.exe
 
 :: Add reminder about using different builds, forks, branches of encoders.
-echo "If you want to use a different build or version of an encoder, just replace it using the same executable name." > readme.txt
+echo If you want to use a different build or version of an encoder, just replace it using the same executable name. > readme.txt
 
 cd ..\
 cd .\x265
@@ -144,7 +142,7 @@ rmdir /s /q .\llvm
 del ReadMe.txt
 
 :: Add reminder about using different builds, forks, branches of encoders.
-echo "If you want to use a different build or version of an encoder, just replace it using the same executable name." > readme.txt
+echo If you want to use a different build or version of an encoder, just replace it using the same executable name. > readme.txt
 
 cd ..\
 cd .\vpxenc
@@ -208,19 +206,13 @@ cd .\svt-av1
 
 :: %Tar-->% -xf .\SVT-AV1-2.0.zip --strip-components 2 > nul
 
-:: Download SVT-AV1-PSY release ~3.0.2
-set "BASE=svt-av1-psy_v3.0.2-1-g21db3f7_2025-04-20_10.02.31_MULTI-MARCH_av1an-pgo_clang20.1.0_injected"
-set "ZIP=%BASE%.zip"
-set "ARCHIVE=%BASE%.7z"
-set "FILES=x86-64\SvtAv1EncApp.exe x86-64\mimalloc.dll x86-64\mimalloc-redirect.dll"
-
-%Download-->% https://github.com/user-attachments/files/19824692/%ZIP%
-%Tar-->% -xf .\%ZIP% %ARCHIVE% > nul
-%AV1%\7zr.exe -y e .\%ARCHIVE% %FILES% > nul
-
+:: Download SVT-AV1-PSYEX testing branch
+:: https://github.com/BlueSwordM/svt-av1-psyex/pull/21
+%Download-->% https://github.com/user-attachments/files/21138524/svt-av1-psyex-testing.zip
+%Tar-->% -xf .\svt-av1-psyex-testing.zip > nul
 
 :: Add reminder about using different builds, forks, branches of encoders.
-echo "If you want to use a different build or version of an encoder, just replace it using the same executable name." > readme.txt
+echo If you want to use a different build or version of an encoder, just replace it using the same executable name. > readme.txt
 
 popd
 
