@@ -100,8 +100,8 @@ for /d /r %%i in (*) do (
 
 cd ..\
 
-:: Download portable mkvtoolnix ~93.0
-%Download-->% https://mkvtoolnix.download/windows/releases/93.0/mkvtoolnix-64-bit-93.0.7z -O mkvtoolnix.7z
+:: Download portable mkvtoolnix ~94.0
+%Download-->% https://mkvtoolnix.download/windows/releases/94.0/mkvtoolnix-64-bit-94.0.7z -O mkvtoolnix.7z
 %Extract-->% .\mkvtoolnix.7z > nul
 del .\mkvtoolnix.7z
 
@@ -134,8 +134,8 @@ cd ..\
 cd .\x265
 
 :: Download x265 encoder
-%Download-->% https://github.com/jpsdr/x265/releases/download/4.1.0.054/x265_r4_1_0_054.7z
-%Extract-->% .\x265_r4_1_0_054.7z > nul
+%Download-->% https://github.com/jpsdr/x265/releases/download/4.1.0.136/x265_r4_1_0_136.7z
+%Extract-->% .\x265_r4_1_0_136.7z > nul
 MOVE /y .\Winthread\Multilib\Release\x265_x64.exe x265.exe > nul
 rmdir /s /q .\winthread
 rmdir /s /q .\llvm
@@ -160,10 +160,10 @@ cd .\rav1e
 cd ..\
 cd .\vapoursynth64
 
-:: Download embedded Python ~3.13.5
-%Download-->% https://www.python.org/ftp/python/3.13.5/python-3.13.5-embed-amd64.zip
-%Tar-->% -xf .\python-3.13.5-embed-amd64.zip
-del .\python-3.13.5-embed-amd64.zip
+:: Download embedded Python ~3.13.7
+%Download-->% https://www.python.org/ftp/python/3.13.7/python-3.13.7-embed-amd64.zip
+%Tar-->% -xf .\python-3.13.7-embed-amd64.zip
+del .\python-3.13.7-embed-amd64.zip
 
 :: Download VapourSynth64 Portable ~R72
 %Download-->% https://github.com/vapoursynth/vapoursynth/releases/download/R72/VapourSynth64-Portable-R72.zip
